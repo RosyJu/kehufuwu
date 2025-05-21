@@ -1,0 +1,99 @@
+div.body {
+  position: fixed;
+  display: block;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 75vw;
+  height: 75vh;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+}
+div.body > div.topic {
+  font-size: 24px;
+  color: rgb(49, 49, 49);
+  position: relative;
+  width: 100%;
+  text-align: center;
+  top: 24px;
+  pointer-events: none;
+  font-weight: 550;
+  padding-left: 32px;
+  padding-right: 32px
+}
+div.body > div.options {
+  font-size: 24px;
+  position: relative;
+  top: 24px;
+}
+div.body > div.options > input {
+  display: none;
+}
+div.body > div.options > input:checked + div.item {
+  border: 3px solid #891673;
+  background: rgba(219, 219, 219, 0.5);
+  color: rgb(48, 48, 48);
+}
+div.body > div.options > div.item {
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 8px;
+  left: 5%;
+  width: 90%;
+  background: rgba(54, 54, 54, 0.5);
+  border: 3px solid #ffffff;
+  color: rgb(219, 219, 219);
+}
+div.body > div.options > div.item:hover {
+  border: 3px solid #86c0cb;
+}
+div.body > div.options > div.item > label {
+  padding: 8px;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+div.body > div.options > div.item > label > span {
+  display: block;
+}
+div.body > div.answer {
+  position: relative;
+  top: 3vh;
+}
+div.body > div.answer > div {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+div.body > div.answer {
+  display: none;
+}
+div.body > div.answer[bool="true"] {
+  display: block;
+  color: chartreuse;
+}
+div.body > div.answer[bool="false"] {
+  display: block;
+  color: red;
+}
+div.body > div.answer > div.left {
+  text-align: right;
+  padding-right: 16px;
+}div.body > div.answer > div.right {
+  text-align: left;
+  padding-left: 16px;
+}
+div.body > div.judgment {
+  position: relative;
+  top: 5vh;
+}
+div.body > div.judgment > div {
+  width: 50%;
+  float: left;
+}
+div.body > div.judgment > div > button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <meta name="description" content="一个响应式网页" />
+    <title>在浙学-客户服务题目练习</title>
+    <link rel="stylesheet" type="text/css" href="./css/start.css" />
+    <link rel="stylesheet" type="text/css" href="./css/body.css" />
+    <link rel="stylesheet" type="text/css" href="./css/button.css" />
+  </head>
+
+  <body>
+    <canvas id="stars"></canvas>
+    <div class="body">
+      <div class="topic">题目题目题目题目题目题目</div>
+      <div class="options">
+        <input name="radio" id="radioA" type="radio" />
+        <div class="item">
+          <label for="radioA"><span>选项A</span></label>
+        </div>
+        <input name="radio" id="radioB" type="radio" />
+        <div class="item">
+          <label for="radioB"><span>选项A</span></label>
+        </div>
+        <input name="radio" id="radioC" type="radio" />
+        <div class="item">
+          <label for="radioC"><span>选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A</span></label>
+        </div>
+        <input name="radio" id="radioD" type="radio" />
+        <div class="item">
+          <label for="radioD"><span>选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A选项A</span></label>
+        </div>
+      </div>
+      <div class='answer' bool="false">
+        <div class="left">正确答案:<span>A</span></div>
+        <div class="right">我的答案:<span>B</span></div>
+      </div>
+      <div class="judgment">
+        <div class="left">
+          <button onclick="send()">
+            <div class="svg-wrapper-1">
+              <div class="svg-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <span>提交</span>
+          </button>
+        </div>
+        <div class="right">
+          <button onclick="nextTopic()">
+            <div class="svg-wrapper-1">
+              <div class="svg-wrapper">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    fill="currentColor"
+                    d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <span>下一题</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <script type="text/javascript" src="./javascript/start.js"></script>
+    <script type="text/javascript" src="./javascript/topic_1.js"></script>
+    <script type="text/javascript" src="./javascript/body.js"></script>
+  </body>
+</html>
