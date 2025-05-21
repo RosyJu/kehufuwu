@@ -9,6 +9,15 @@ div.body {
   background: rgba(255, 255, 255, 0.7);
   border-radius: 16px;
 }
+div.body > div.head {
+  position: relative;
+  top: 1vh;
+}
+div.body > div.head > div {
+  display: inline-block;
+  width: calc((100% / 3) - 3px);
+  text-align: center;
+}
 div.body > div.topic {
   font-size: 24px;
   color: rgb(49, 49, 49);
@@ -30,7 +39,7 @@ div.body > div.options > input {
   display: none;
 }
 div.body > div.options > input:checked + div.item {
-  border: 3px solid #891673;
+  border: 3px solid #35ff49;
   background: rgba(219, 219, 219, 0.5);
   color: rgb(48, 48, 48);
 }
@@ -60,20 +69,21 @@ div.body > div.options > div.item > label > span {
 div.body > div.answer {
   position: relative;
   top: 3vh;
+  height: 29px;
 }
 div.body > div.answer > div {
   float: left;
   width: 50%;
   text-align: center;
 }
-div.body > div.answer {
+div.body > div.answer > div {
   display: none;
 }
-div.body > div.answer[bool="true"] {
+div.body > div.answer[bool="true"] > div {
   display: block;
   color: chartreuse;
 }
-div.body > div.answer[bool="false"] {
+div.body > div.answer[bool="false"] > div {
   display: block;
   color: red;
 }
@@ -84,9 +94,18 @@ div.body > div.answer > div.left {
   text-align: left;
   padding-left: 16px;
 }
+div.body > div.type {
+  position: relative;
+  top: 6vh;
+  transform: translate(-50%, 0);
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+}
 div.body > div.judgment {
   position: relative;
-  top: 5vh;
+  top: 1vh;
 }
 div.body > div.judgment > div {
   width: 50%;

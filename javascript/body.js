@@ -24,7 +24,15 @@ window.onload = function () {
   nextTopic();
 };
 
+let bool = [0, 0];
+
 function send() {
+  bool[1]++;
+  document.querySelectorAll("div.options label").forEach((item) => {
+    item.removeAttribute("onclick");
+    item.removeAttribute("for");
+  });
+  document.querySelectorAll("button")[0].setAttribute("onclick", "");
   if (topicType == "单选题" || topicType == "多选题") {
     const list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let num = 0;
@@ -42,23 +50,26 @@ function send() {
     document.querySelectorAll("div.right > span")[0].textContent = `${aws}`;
     if (aws == newTopic.answer) {
       document.querySelectorAll("div.answer")[0].setAttribute("bool", "true");
+      bool[0]++;
     } else {
       document.querySelectorAll("div.answer")[0].setAttribute("bool", "false");
     }
   } else {
     if (document.querySelectorAll("div.options input")[0].checked) {
-        document.querySelectorAll("div.right > span")[0].textContent = "yes"
+      document.querySelectorAll("div.right > span")[0].textContent = "yes";
       if ("yes" == newTopic.answer) {
         document.querySelectorAll("div.answer")[0].setAttribute("bool", "true");
+        bool[0]++;
       } else {
         document
           .querySelectorAll("div.answer")[0]
           .setAttribute("bool", "false");
       }
     } else if (document.querySelectorAll("div.options input")[1].checked) {
-      document.querySelectorAll("div.right > span")[0].textContent = "no"
-        if ("no" == newTopic.answer) {
+      document.querySelectorAll("div.right > span")[0].textContent = "no";
+      if ("no" == newTopic.answer) {
         document.querySelectorAll("div.answer")[0].setAttribute("bool", "true");
+        bool[0]++;
       } else {
         document
           .querySelectorAll("div.answer")[0]
@@ -66,12 +77,16 @@ function send() {
       }
     }
   }
+  document.querySelectorAll(
+    "div.head > div > span.correctness"
+  )[0].textContent = `${((bool[0] / bool[1]) * 100).toFixed(2)}%`;
+
+  document.querySelectorAll(
+    "div.head > div > span.topicStatistics"
+  )[0].textContent = `${++topicStatistics}`;
 }
 
-
-
-
-
+let topicStatistics = 0;
 function nextTopic() {
   let rand = Math.floor(Math.random() * topic.length);
 
@@ -124,7 +139,21 @@ function nextTopic() {
     document.querySelectorAll("div.options")[0].innerHTML = opt;
   }
   document.querySelectorAll("div.answer")[0].setAttribute("bool", ``);
+  document.querySelectorAll("div.type")[0].textContent = `${topicType}`;
   document.querySelectorAll(
     "div.left > span"
   )[0].textContent = `${newTopic.answer}`;
 }
+
+let time = [0, 0];
+
+let timer = setInterval(() => {
+  time[1]++;
+  if (time[1] > 59) {
+    time[0]++;
+    time[1] = 0;
+  }
+  document.querySelectorAll(
+    "div.head > div > span.time"
+  )[0].textContent = `${time[0].toString().padStart(2, '0')}:${time[1].toString().padStart(2, '0')}`;
+}, 1000);
