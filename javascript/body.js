@@ -24,9 +24,10 @@ window.onload = function () {
   nextTopic();
 };
 
-let bool = [0, 0];
+let bool = [0, 0, true];
 
 function send() {
+  bool[2] = true;
   bool[1]++;
   document.querySelectorAll("div.options label").forEach((item) => {
     item.removeAttribute("onclick");
@@ -75,6 +76,9 @@ function send() {
           .querySelectorAll("div.answer")[0]
           .setAttribute("bool", "false");
       }
+    } else {
+      document.querySelectorAll("div.right > span")[0].textContent = "";
+      document.querySelectorAll("div.answer")[0].setAttribute("bool", "false");
     }
   }
   document.querySelectorAll(
@@ -88,61 +92,67 @@ function send() {
 
 let topicStatistics = 0;
 function nextTopic() {
-  let rand = Math.floor(Math.random() * topic.length);
+  if (bool[2]) {
+    document.querySelectorAll("button")[0].setAttribute("onclick", "send()");
+    let rand = Math.floor(Math.random() * topic.length);
 
-  const list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  newTopic = topic[rand];
+    newTopic = topic[rand];
 
-  document.querySelectorAll("div.topic")[0].textContent = topic[rand].topic;
-  if (list.includes(topic[rand].answer)) {
-    // 单选题处理
-    topicType = "单选题";
-    let opt = ``;
-    for (let key in topic[rand].item) {
-      //   console.log(key)
-      opt += `<input name="radio" id="radio${list[key]}" type="radio" />
+    document.querySelectorAll("div.topic")[0].textContent = topic[rand].topic;
+    if (list.includes(topic[rand].answer)) {
+      // 单选题处理
+      topicType = "单选题";
+      let opt = ``;
+      for (let key in topic[rand].item) {
+        //   console.log(key)
+        opt += `<input name="radio" id="radio${list[key]}" type="radio" />
         <div class="item">
           <label for="radio${list[key]}" onclick="setTimeout(() => {
   send();
 }, 1);"><span>${topic[rand].item[key]}</span></label>
         </div>`;
-    }
-    document.querySelectorAll("div.options")[0].innerHTML = opt;
-  } else if (["yes", "no"].includes(topic[rand].answer)) {
-    // 判断题处理
-    topicType = "判断题";
-    // console.log(topic[rand].answer);
-    let opt = ``;
-    for (let key in topic[rand].item) {
-      //   console.log(key)
-      opt += `<input name="radio" id="radio${list[key]}" type="radio" />
+      }
+      document.querySelectorAll("div.options")[0].innerHTML = opt;
+    } else if (["yes", "no"].includes(topic[rand].answer)) {
+      // 判断题处理
+      topicType = "判断题";
+      // console.log(topic[rand].answer);
+      let opt = ``;
+      for (let key in topic[rand].item) {
+        //   console.log(key)
+        opt += `<input name="radio" id="radio${list[key]}" type="radio" />
         <div class="item">
           <label for="radio${list[key]}" onclick="setTimeout(() => {
   send();
 }, 1);"><span>${topic[rand].item[key]}</span></label>
         </div>`;
-    }
-    document.querySelectorAll("div.options")[0].innerHTML = opt;
-  } else if (topic[rand].answer.includes(",")) {
-    // 多选题处理
-    topicType = "多选题";
-    // console.log(topic[rand].answer);
-    let opt = ``;
-    for (let key in topic[rand].item) {
-      //   console.log(key)
-      opt += `<input name="radio" id="radio${list[key]}" type="checkbox" />
+      }
+      document.querySelectorAll("div.options")[0].innerHTML = opt;
+    } else if (topic[rand].answer.includes(",")) {
+      // 多选题处理
+      topicType = "多选题";
+      // console.log(topic[rand].answer);
+      let opt = ``;
+      for (let key in topic[rand].item) {
+        //   console.log(key)
+        opt += `<input name="radio" id="radio${list[key]}" type="checkbox" />
         <div class="item">
           <label for="radio${list[key]}"><span>${topic[rand].item[key]}</span></label>
         </div>`;
+      }
+      document.querySelectorAll("div.options")[0].innerHTML = opt;
     }
-    document.querySelectorAll("div.options")[0].innerHTML = opt;
+    document.querySelectorAll("div.answer")[0].setAttribute("bool", ``);
+    document.querySelectorAll("div.type")[0].textContent = `${topicType}`;
+    document.querySelectorAll(
+      "div.left > span"
+    )[0].textContent = `${newTopic.answer}`;
+    bool[2] = false;
+  } else {
+    send();
   }
-  document.querySelectorAll("div.answer")[0].setAttribute("bool", ``);
-  document.querySelectorAll("div.type")[0].textContent = `${topicType}`;
-  document.querySelectorAll(
-    "div.left > span"
-  )[0].textContent = `${newTopic.answer}`;
 }
 
 let time = [0, 0];
@@ -155,5 +165,7 @@ let timer = setInterval(() => {
   }
   document.querySelectorAll(
     "div.head > div > span.time"
-  )[0].textContent = `${time[0].toString().padStart(2, '0')}:${time[1].toString().padStart(2, '0')}`;
+  )[0].textContent = `${time[0].toString().padStart(2, "0")}:${time[1]
+    .toString()
+    .padStart(2, "0")}`;
 }, 1000);
