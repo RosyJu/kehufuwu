@@ -96,7 +96,7 @@ div.body > div.answer > div.left {
 }
 div.body > div.type {
   position: relative;
-  top: 6vh;
+  top: 64px;
   transform: translate(-50%, 0);
   left: 50%;
   width: 100%;
@@ -105,7 +105,7 @@ div.body > div.type {
 }
 div.body > div.judgment {
   position: relative;
-  top: 1vh;
+  top: 16px;
 }
 div.body > div.judgment > div {
   width: 50%;
