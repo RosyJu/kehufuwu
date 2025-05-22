@@ -28,7 +28,7 @@ div.body > div.topic {
   pointer-events: none;
   font-weight: 550;
   padding-left: 32px;
-  padding-right: 32px
+  padding-right: 32px;
 }
 div.body > div.options {
   font-size: 24px;
@@ -90,7 +90,8 @@ div.body > div.answer[bool="false"] > div {
 div.body > div.answer > div.left {
   text-align: right;
   padding-right: 16px;
-}div.body > div.answer > div.right {
+}
+div.body > div.answer > div.right {
   text-align: left;
   padding-left: 16px;
 }
